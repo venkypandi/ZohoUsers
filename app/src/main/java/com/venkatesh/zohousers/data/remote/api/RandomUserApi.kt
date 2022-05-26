@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface RandomUserApi {
 
-    @GET
+    @GET("/api")
     suspend fun getRandomUsers(@Query("page") page:Int,@Query("results") results:Int):UserResponseModel
 
 }

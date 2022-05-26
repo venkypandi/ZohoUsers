@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.venkatesh.zohousers.data.remote.model.Result
+import com.venkatesh.zohousers.data.remote.model.UserResponseModel
 import com.venkatesh.zohousers.data.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,12 +16,13 @@ import javax.inject.Inject
 @HiltViewModel
 class UserViewModel @Inject constructor(private val repository: UserRepository) : ViewModel() {
 
-//    private val _result = MutableLiveData<PagingData<Result>>()
-    lateinit var result: LiveData<PagingData<Result>>
+    val result = repository.getUserList().cachedIn(viewModelScope)
 
-    init {
-        viewModelScope.launch {
-            result = repository.getUserList()
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            result = repository.getUserList()
+//        }
+//    }
+
+
 }
