@@ -1,21 +1,27 @@
 package com.venkatesh.zohousers.ui.users
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.venkatesh.zohousers.data.paging.UserLoadingStateAdapter
 import com.venkatesh.zohousers.data.paging.UsersPagingAdapter
+import com.venkatesh.zohousers.data.remote.model.Result
 import com.venkatesh.zohousers.databinding.FragmentUserBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -35,11 +41,11 @@ class UserFragment : Fragment() {
     ): View {
 
         _binding = FragmentUserBinding.inflate(inflater, container, false)
-
-        usersAdapter=UsersPagingAdapter(requireContext()){
-                    listItemClicked()
+        postponeEnterTransition()
+        usersAdapter=UsersPagingAdapter(requireContext()){ data,view->
+                    listItemClicked(data,view)
                 }
-
+//        userViewModel.searchUsers("Sa")
         binding.swipeRefresh.setOnRefreshListener {
             usersAdapter.refresh()
             binding.swipeRefresh.isRefreshing = false
@@ -54,11 +60,19 @@ class UserFragment : Fragment() {
 
         binding.rvUsers.adapter = concatAdapter
 
+//       viewLifecycleOwner.lifecycleScope.launch {
+//           userViewModel.pagingFlow.collectLatest { usersAdapter.submitData(it)  }
+//       }
+
 
         userViewModel.result.observe(viewLifecycleOwner){
             if(it!=null){
+                Log.d("UserFragmentDebug", "load: 1")
                 binding.rvUsers.setHasFixedSize(true)
                 usersAdapter.submitData(lifecycle,it)
+                (view?.parent as? ViewGroup)?.doOnPreDraw {
+                    startPostponedEnterTransition()
+                }
 
             }
         }
@@ -86,9 +100,15 @@ class UserFragment : Fragment() {
         return _binding!!.root
     }
 
-    private fun listItemClicked() {
-
+    private fun listItemClicked(data: Result,view: View) {
+        Log.d("email", "listItemClicked: ${data.email}")
+        val extras = FragmentNavigatorExtras(
+            view to data.email
+        )
+        val directions = UserFragmentDirections.actionNavHomeToUserDetailFragment(data.email)
+        findNavController().navigate(directions,extras)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

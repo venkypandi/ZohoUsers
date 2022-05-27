@@ -1,6 +1,10 @@
 package com.venkatesh.zohousers.data.remote.model
 
 
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class UserResponseModel(
@@ -21,29 +25,38 @@ data class Info(
     val version: String
 )
 
+@Entity(tableName = "users")
 data class Result(
     @SerializedName("cell")
     val cell: String,
     @SerializedName("dob")
+    @Embedded
     val dob: Dob,
+    @PrimaryKey
     @SerializedName("email")
     val email: String,
     @SerializedName("gender")
     val gender: String,
     @SerializedName("id")
+    @Embedded
     val id: Id,
     @SerializedName("location")
+    @Embedded
     val location: Location,
     @SerializedName("login")
+    @Embedded
     val login: Login,
     @SerializedName("name")
+    @Embedded
     val name: Name,
     @SerializedName("nat")
     val nat: String,
     @SerializedName("phone")
     val phone: String,
     @SerializedName("picture")
+    @Embedded
     val picture: Picture,
+    @Embedded
     @SerializedName("registered")
     val registered: Registered
 )
@@ -65,14 +78,13 @@ data class Dob(
 data class Id(
     @SerializedName("name")
     val name: String,
-    @SerializedName("value")
-    val value: Any
 )
 
 data class Location(
     @SerializedName("city")
     val city: String,
     @SerializedName("coordinates")
+    @Embedded
     val coordinates: Coordinates,
     @SerializedName("country")
     val country: String,
@@ -81,8 +93,10 @@ data class Location(
     @SerializedName("state")
     val state: String,
     @SerializedName("street")
+    @Embedded
     val street: Street,
     @SerializedName("timezone")
+    @Embedded
     val timezone: Timezone
 )
 
@@ -124,13 +138,16 @@ data class Picture(
 
 data class Registered(
     @SerializedName("age")
+    @ColumnInfo(name = "reg_age")
     val age: Int,
+    @ColumnInfo(name = "reg_date")
     @SerializedName("date")
     val date: String
 )
 
 data class Street(
     @SerializedName("name")
+    @ColumnInfo(name = "street_name")
     val name: String,
     @SerializedName("number")
     val number: Int

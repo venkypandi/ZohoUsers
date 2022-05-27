@@ -15,26 +15,29 @@ import com.venkatesh.zohousers.data.remote.model.Result
 import com.venkatesh.zohousers.databinding.UserListItemBinding
 import kotlin.math.log
 
-class UsersPagingAdapter(var context:Context, var clickListener:()->Unit) :
+class UsersPagingAdapter(var context:Context, var clickListener:(Result,View)->Unit) :
     PagingDataAdapter<Result, UsersPagingAdapter.UsersViewHolder>(COMPARATOR) {
 
     inner class UsersViewHolder(private val binding:UserListItemBinding):RecyclerView.ViewHolder(binding.root){
 
-        fun bind(context: Context,data:Result?,clickListener: () -> Unit){
+        fun bind(context: Context,data:Result?,clickListener: (Result,View) -> Unit){
             Glide.with(context)
                 .load(data!!.picture.large)
                 .placeholder(AppCompatResources.getDrawable(context,R.drawable.ic_robot))
                 .into(binding.ivProfile)
+            binding.ivProfile.transitionName = data.email
             Log.d("usersadapter", data.toString())
 
             binding.tvTitle.text = "${data.name.title} ${data.name.first} ${data.name.last}"
             binding.tvName.text = data.location.city
+            binding.cvUsers.setOnClickListener {
+                clickListener(data,binding.ivProfile)
+            }
         }
 
     }
 
     override fun onBindViewHolder(holder: UsersPagingAdapter.UsersViewHolder, position: Int) {
-        Log.d("useradapter", "onBindViewHolder: 1")
         getItem(position).let {
             holder.bind(context,it,clickListener)
         }
