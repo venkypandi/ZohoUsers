@@ -91,4 +91,9 @@ class UserDetailFragment : Fragment() {
         return _binding!!.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

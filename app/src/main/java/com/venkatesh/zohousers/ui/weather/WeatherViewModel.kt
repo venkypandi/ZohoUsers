@@ -3,13 +3,21 @@ package com.venkatesh.zohousers.ui.weather
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.venkatesh.zohousers.data.repository.weather.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-class WeatherViewModel : ViewModel() {
+@HiltViewModel
+class WeatherViewModel @Inject constructor(private val repository: WeatherRepository): ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+    val weatherResponse = repository.weatherResponse
+
+    fun getWeatherInfo(query:String){
+        viewModelScope.launch {
+            repository.getWeatherInfo(query)
+        }
     }
-    val text: LiveData<String> = _text
 }
