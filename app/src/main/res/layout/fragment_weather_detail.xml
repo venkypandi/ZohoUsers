@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.weather.WeatherFragment">
+    tools:context=".ui.weather.WeatherDetailFragment">
 
     <ImageView
         android:id="@+id/iv_gallery"
@@ -21,8 +21,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fadingEdge="none"
-        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -33,8 +31,6 @@
             android:id="@+id/cl_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="25dp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -48,51 +44,40 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/nav_icon"
-                android:src="@drawable/ic_baseline_table_rows_24"
-                app:layout_constraintEnd_toStartOf="@id/tv_title"
+                android:src="@drawable/ic_back"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/tv_error"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="@string/zohoweather"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/no_location"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/iv_navbar"
-                app:layout_constraintEnd_toStartOf="@id/iv_users"
-                app:layout_constraintStart_toEndOf="@id/iv_navbar"
-                app:layout_constraintTop_toTopOf="@id/iv_navbar" />
-
-            <ImageView
-                android:id="@+id/iv_users"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:contentDescription="@string/user_icon"
-                android:src="@drawable/ic_baseline_group_24"
-                app:layout_constraintBottom_toBottomOf="@id/iv_navbar"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_title"
-                app:layout_constraintTop_toTopOf="@id/iv_navbar" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/tv_city_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:alpha="0.8"
                 android:fontFamily="@font/roboto_light"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Kovilpatti" />
 
             <TextView
@@ -115,31 +100,17 @@
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/white"
                 android:textSize="100sp"
-                app:layout_constraintEnd_toStartOf="@id/tv_degree_c"
-                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_current_time"
-                tools:text="32\u00ba" />
-
-            <TextView
-                android:id="@+id/tv_degree_c"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/c"
-                android:textColor="@color/white"
-                android:textSize="80sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_degree"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_degree" />
+                tools:text="32\u2103" />
 
             <View
                 android:id="@+id/view_line"
                 android:layout_width="0dp"
                 android:layout_height="10dp"
                 android:background="@drawable/dashed_line"
-                app:layout_constraintEnd_toEndOf="@id/tv_degree_c"
+                app:layout_constraintEnd_toEndOf="@id/tv_degree"
                 app:layout_constraintStart_toStartOf="@id/tv_degree"
                 app:layout_constraintTop_toBottomOf="@id/tv_degree" />
 
@@ -260,7 +231,6 @@
                 android:fontFamily="@font/roboto_medium"
                 android:maxLength="5"
                 android:padding="5dp"
-
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@id/tv_aq_2"
@@ -277,7 +247,6 @@
                 android:fontFamily="@font/roboto_medium"
                 android:maxLength="5"
                 android:padding="5dp"
-
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@id/tv_aq_3"
@@ -301,32 +270,34 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_aq_1"
                 tools:text="5.3" />
 
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_users"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_aqr_1"
+                tools:listitem="@layout/weather_list_item" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-

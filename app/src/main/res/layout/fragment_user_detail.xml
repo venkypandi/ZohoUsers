@@ -1,241 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.users.UserDetailFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/hl_gl_50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_header"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/user_details_bg"
-        app:layout_constraintBottom_toTopOf="@id/hl_gl_50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="?actionBarSize"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="Go back"
-            android:focusable="true"
-            android:padding="@dimen/dimen_8dp"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            app:layout_constraintBottom_toTopOf="@id/iv_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iv_profile"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dimen_200dp"
-            android:layout_margin="@dimen/dimen_4dp"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitCenter"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/user_details_bg"
+            app:layout_constraintBottom_toTopOf="@id/cl_details"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_back"
-            tools:src="@drawable/ic_robot" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_8dp"
-            android:fontFamily="sans-serif-thin"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_city_name"
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="?actionBarSize"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/go_back"
+                android:focusable="true"
+                android:padding="@dimen/dimen_8dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintBottom_toTopOf="@id/iv_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_200dp"
+                android:layout_margin="@dimen/dimen_4dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@id/tv_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_back"
+                tools:src="@drawable/ic_robot" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:alpha="0.8"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_city_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_profile"
+                tools:text="Venkatesh Pandian" />
+
+            <TextView
+                android:id="@+id/tv_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="sans-serif-thin"
+                android:textAllCaps="true"
+                android:textColor="@color/blueTextColor"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                tools:text="Kovilpatti,India" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_profile"
-            tools:text="Venkatesh Pandian" />
+            app:layout_constraintTop_toBottomOf="@id/cl_header">
 
-        <TextView
-            android:id="@+id/tv_city_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_8dp"
-            android:fontFamily="sans-serif-thin"
-            android:textAllCaps="true"
-            android:textColor="@color/blueTextColor"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_name"
-            tools:text="Kovilpatti,India" />
+            <TextView
+                android:id="@+id/tv_gender_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/gender"
+                android:textColor="@color/blueTextColor"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_gender"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:alpha="0.8"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toTopOf="@id/view_line"
+                app:layout_constraintStart_toStartOf="@id/tv_gender_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_gender_title"
+                tools:text="@string/gender" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/secondaryTextColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_gender"
+                app:layout_constraintTop_toBottomOf="@id/tv_gender" />
+
+            <TextView
+                android:id="@+id/tv_email_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/email"
+                android:textColor="@color/blueTextColor"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:alpha="0.8"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toTopOf="@id/view_line1"
+                app:layout_constraintStart_toStartOf="@id/tv_email_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_email_title"
+                tools:text="abc@abc.com" />
+
+            <View
+                android:id="@+id/view_line1"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/secondaryTextColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_email"
+                app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+            <TextView
+                android:id="@+id/tv_dob_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/date_of_birth"
+                android:textColor="@color/blueTextColor"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_dob"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_line1" />
+
+            <TextView
+                android:id="@+id/tv_dob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:alpha="0.8"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toTopOf="@id/view_line2"
+                app:layout_constraintStart_toStartOf="@id/tv_dob_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_dob_title"
+                tools:text="28/05/1996" />
+
+            <View
+                android:id="@+id/view_line2"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/secondaryTextColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_dob"
+                app:layout_constraintTop_toBottomOf="@id/tv_dob" />
+
+            <TextView
+                android:id="@+id/tv_phone_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/phone"
+                android:textColor="@color/blueTextColor"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_line2" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:alpha="0.8"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toTopOf="@id/view_line3"
+                app:layout_constraintStart_toStartOf="@id/tv_phone_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone_title"
+                tools:text="098-00407196" />
+
+            <View
+                android:id="@+id/view_line3"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/secondaryTextColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_phone"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cl_header">
 
-        <TextView
-            android:id="@+id/tv_gender_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:text="Gender"
-            android:textColor="@color/blueTextColor"
-            android:textSize="@dimen/dimen_16dp"
-            app:layout_constraintBottom_toTopOf="@id/tv_gender"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:alpha="0.8"
-            android:text="Gender"
-            android:textColor="@color/black"
-            android:textSize="@dimen/dimen_16dp"
-            app:layout_constraintBottom_toTopOf="@id/view_line"
-            app:layout_constraintStart_toStartOf="@id/tv_gender_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_gender_title" />
-
-        <View
-            android:id="@+id/view_line"
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/secondaryTextColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_gender"
-            app:layout_constraintTop_toBottomOf="@id/tv_gender" />
-
-        <TextView
-            android:id="@+id/tv_email_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:text="Email"
-            android:textColor="@color/blueTextColor"
-            android:textSize="@dimen/dimen_16dp"
-            app:layout_constraintBottom_toTopOf="@id/tv_email"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_line" />
-
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:alpha="0.8"
-            android:text="abc@abc.com"
-            android:textColor="@color/black"
-            android:textSize="@dimen/dimen_16dp"
-            app:layout_constraintBottom_toTopOf="@id/view_line1"
-            app:layout_constraintStart_toStartOf="@id/tv_email_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_email_title" />
-
-        <View
-            android:id="@+id/view_line1"
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/secondaryTextColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_email"
-            app:layout_constraintTop_toBottomOf="@id/tv_email" />
-
-        <TextView
-            android:id="@+id/tv_dob_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:text="Date of Birth"
-            android:textColor="@color/blueTextColor"
-            android:textSize="@dimen/dimen_16dp"
-            app:layout_constraintBottom_toTopOf="@id/tv_dob"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_line1" />
-
-        <TextView
-            android:id="@+id/tv_dob"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:alpha="0.8"
-            android:text="28/05/1996"
-            android:textColor="@color/black"
-            android:textSize="@dimen/dimen_16dp"
-            app:layout_constraintBottom_toTopOf="@id/view_line2"
-            app:layout_constraintStart_toStartOf="@id/tv_dob_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_dob_title" />
-
-        <View
-            android:id="@+id/view_line2"
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/secondaryTextColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_dob"
-            app:layout_constraintTop_toBottomOf="@id/tv_dob" />
-
-        <TextView
-            android:id="@+id/tv_phone_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:text="Phone"
-            android:textColor="@color/blueTextColor"
-            android:textSize="@dimen/dimen_16dp"
-            app:layout_constraintBottom_toTopOf="@id/tv_phone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_line2" />
-
-        <TextView
-            android:id="@+id/tv_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:alpha="0.8"
-            android:text="098-00407196"
-            android:textColor="@color/black"
-            android:textSize="@dimen/dimen_16dp"
-            app:layout_constraintBottom_toTopOf="@id/view_line3"
-            app:layout_constraintStart_toStartOf="@id/tv_phone_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_phone_title" />
-
-        <View
-            android:id="@+id/view_line3"
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/secondaryTextColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_phone"
-            app:layout_constraintTop_toBottomOf="@id/tv_phone" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -4,11 +4,11 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -17,9 +17,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.venkatesh.zohousers.R
-import com.venkatesh.zohousers.databinding.FragmentUserBinding
 import com.venkatesh.zohousers.databinding.FragmentUserDetailBinding
-import com.venkatesh.zohousers.utils.DateUtils
 import com.venkatesh.zohousers.utils.DateUtils.Companion.getDateWithServerTimeStamp
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,7 +35,6 @@ class UserDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentUserDetailBinding.inflate(inflater,container,false)
         postponeEnterTransition()
         val animation = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
@@ -46,6 +43,9 @@ class UserDetailFragment : Fragment() {
         userViewModel.getUserByEmail(args.data)
         binding.ivProfile.transitionName = args.data
 
+        binding.btnBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
         userViewModel.userDetails.observe(viewLifecycleOwner){
             if(it!=null){
                 Log.d("userdetails", "onCreateView: ${it}")

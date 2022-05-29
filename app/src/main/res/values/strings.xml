@@ -12,4 +12,30 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zoho_users">Zoho Users</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="retry">Retry</string>
+    <string name="go_back">Go back</string>
+    <string name="gender">Gender</string>
+    <string name="email">Email</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="phone">Phone</string>
+    <string name="image_bg">image bg</string>
+    <string name="nav_icon">Nav icon</string>
+    <string name="zohoweather">ZohoWeather</string>
+    <string name="user_icon">user icon</string>
+    <string name="c">C</string>
+    <string name="weather_icon">weather icon</string>
+    <string name="air_quality">Air Quality</string>
+    <string name="co">CO</string>
+    <string name="no_u2082">NO₂</string>
+    <string name="o_u2083">O₃</string>
+    <string name="so_u2082">SO₂</string>
+    <string name="no_location">Weather report not available for this location..</string>
+    <string name="no_internet_connection_please_try_again">No Internet Connection..Please Try Again</string>
+    <string name="venkatesh_pandian">Venkatesh Pandian</string>
+    <string name="svenkateshpandian_gmail_com">svenkateshpandian@gmail.com</string>
+    <string name="users">Users</string>
+    <string name="weather">Weather</string>
+    <string name="search">Search</string>
 </resources>

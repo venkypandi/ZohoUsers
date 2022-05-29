@@ -1,6 +1,6 @@
 package com.venkatesh.zohousers.data.local.dao
 
-import androidx.lifecycle.LiveData
+
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
@@ -25,4 +25,7 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE email = :email")
     fun getUserByEmail(email:String):Result
+
+    @Query("SELECT * FROM users")
+    fun getAllLocalUsers():List<Result>
 }

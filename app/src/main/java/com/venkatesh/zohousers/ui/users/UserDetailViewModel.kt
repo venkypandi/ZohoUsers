@@ -1,6 +1,5 @@
 package com.venkatesh.zohousers.ui.users
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,7 +19,6 @@ class UserDetailViewModel @Inject constructor(private val repository: UserReposi
     fun getUserByEmail(email:String){
         viewModelScope.launch {
             _userDetails.value =  repository.getUserByEmail(email)
-            Log.d("userdetails", _userDetails.value.toString())
         }
 
     }

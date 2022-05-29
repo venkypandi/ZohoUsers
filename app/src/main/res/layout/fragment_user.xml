@@ -12,29 +12,28 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
-        android:text="Zoho Users"
         android:gravity="center"
+        android:text="@string/zoho_users"
         android:textAppearance="?attr/textAppearanceHeadline6"
         android:textColor="@color/primaryTextColor"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/swipeRefresh"
         app:layout_constraintEnd_toStartOf="@id/iv_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_search"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginEnd="@dimen/dimen_16dp"
-        app:layout_constraintBottom_toTopOf="@id/swipeRefresh"
-        app:layout_constraintEnd_toStartOf="@id/iv_search"
-        android:hint="Search User...."
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
-
     <ImageView
+        android:id="@+id/iv_navbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:contentDescription="@string/profile_picture"
+        android:src="@drawable/ic_baseline_table_rows_24_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/iv_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,8 +41,8 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_baseline_person_search_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_header_title"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Search names...." />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
@@ -52,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_header_title"
+        app:layout_constraintTop_toBottomOf="@id/iv_search"
         tools:context=".ui.users.UserFragment">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -62,7 +61,7 @@
             android:background="@color/myBackground"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
-            tools:listitem="@layout/user_list_item"/>
+            tools:listitem="@layout/user_list_item" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <androidx.core.widget.ContentLoadingProgressBar
@@ -71,18 +70,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/retry_button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retry"
         android:layout_marginTop="8dp"
+        android:text="@string/retry"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

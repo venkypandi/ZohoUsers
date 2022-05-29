@@ -15,5 +15,15 @@ class DateUtils {
                 return null
             }
         }
+
+        fun String.getWeatherDateTime():String?{
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
+            val timeFormat = SimpleDateFormat("E, MMM dd, h:mm a")
+            try {
+                return timeFormat.format(dateFormat.parse(this)!!)
+            } catch (e: ParseException) {
+                return null
+            }
+        }
     }
 }
