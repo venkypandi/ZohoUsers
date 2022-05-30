@@ -37,8 +37,9 @@ randomuser.me
 
 
 ## Demo
-![ezgif-1-eb6bb76974](https://user-images.githubusercontent.com/24727889/170962124-613e15f5-6eda-475c-939f-1fae9a9ebd3b.gif)
+
 ![ezgif-1-414efef994](https://user-images.githubusercontent.com/24727889/170947705-f2c1ae26-84d8-44e7-aae1-83c9dd77523d.gif)
+![ezgif-1-eb6bb76974](https://user-images.githubusercontent.com/24727889/170962124-613e15f5-6eda-475c-939f-1fae9a9ebd3b.gif)
 
 ## Features
 
