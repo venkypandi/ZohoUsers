@@ -31,17 +31,13 @@ randomuser.me
 | `seed` | `string` | Any string value but returns same set of data |
 
 
-
-
 ## Authors
 
 - [@venkypandi](https://www.github.com/venkypandi)
 
 
 ## Demo
-
-![Demo](https://im.ezgif.com/tmp/ezgif-1-697e3adb86.gif)
-
+![ezgif-1-414efef994](https://user-images.githubusercontent.com/24727889/170947705-f2c1ae26-84d8-44e7-aae1-83c9dd77523d.gif)
 
 ## Features
 
@@ -72,7 +68,12 @@ randomuser.me
 If you have any feedback, please reach out to me at picksoftwares@gmail.com
 
 
+
 ## References
 
-https://developer.android.com/codelabs/android-paging#0
+Paging3 with Remote Mediator: https://developer.android.com/codelabs/android-paging#0
+
+Shared Element Transition: https://developer.android.com/training/transitions/start-activity
+
+
 
