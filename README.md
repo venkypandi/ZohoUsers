@@ -30,6 +30,23 @@ randomuser.me
 | `results` | `int` | Load data value |
 | `seed` | `string` | Any string value but returns same set of data |
 
+#### Base Url
+
+```http
+https://api.weatherapi.com
+```
+
+#### Get random users
+```http
+  GET /v1/current.json/?key=ENTER_YOUR_KEY_HERE5&q=Kovilpatti&aqi=yes
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `key` | `string` | Your API Key |
+| `q` | `string` | Enter the place name or coordinates |
+| `aqi` | `string` | if yes shows aqi, if no hides aqi |
+
 
 ## Authors
 
