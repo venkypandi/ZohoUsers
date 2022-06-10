@@ -36,7 +36,7 @@ randomuser.me
 https://api.weatherapi.com
 ```
 
-#### Get random users
+#### Get weather report
 ```http
   GET /v1/current.json/?key=ENTER_YOUR_KEY_HERE5&q=Kovilpatti&aqi=yes
 ```
